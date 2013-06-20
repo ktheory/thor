@@ -436,6 +436,9 @@ class Thor
       def start(given_args=ARGV, config={})
         config[:shell] ||= Thor::Base.shell.new
         dispatch(nil, given_args.dup, nil, config)
+      rescue Thor::CommandError => e
+
+
       rescue Thor::Error => e
         ENV["THOR_DEBUG"] == "1" ? (raise e) : config[:shell].error(e.message)
         exit(1) if exit_on_failure?

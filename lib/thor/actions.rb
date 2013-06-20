@@ -251,7 +251,7 @@ class Thor
 
       unless options[:pretend]
         result = config[:capture] ? `#{command}` : system("#{command}")
-        if config.fetch(:raise_error, false) && 0 != $?.exitstatus
+        if config.fetch(:raise_error, false) && 0 != $?
           error =  $?.exitstatus.nil? ? "no exit status (likely force killed)" : "exit status #{$?.exitstatus}"
           raise CommandFailedError.new("#{command} failed with #{error}")
         end

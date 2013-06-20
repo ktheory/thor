@@ -14,7 +14,8 @@ class Thor
   UndefinedTaskError = UndefinedCommandError
 
   # Optionally raised when a run action fails
-  class CommandFailedError < Error
+  class CommandError < Error
+    attr_accessor :severity, :exit_code
   end
 
   # Raised when a command was found, but not invoked properly.
